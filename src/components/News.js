@@ -62,9 +62,7 @@ export default class News extends Component {
   handleNextClick = async () => {
     console.log("next");
 
-    if (
-      this.state.page + 1 <= Math.ceil(this.state.totalResults / this.props.pageSize)
-    ) {
+    if (!(this.state.page + 1 <= Math.ceil(this.state.totalResults / this.props.pageSize))){
       let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&category=${this.props.category}&category=${this.props.category}&category=${this.props.category}&category=${this.props.category}&category=${this.props.category}&category=${this.props.category}&apiKey=da8a69033e81444fa4ca4a2909d0db5a&page=${
         this.state.page + 1
       }&pageSize=${this.props.pageSize}`;
@@ -109,10 +107,7 @@ export default class News extends Component {
             &larr; Previous
           </button>
           <button
-            disabled={
-              this.state.page + 1 >
-              Math.ceil(this.state.totalResults / this.props.pageSize)
-            }
+            disabled={this.state.page + 1 > Math.ceil(this.state.totalResults / this.props.pageSize)}
             type="button"
             className="btn btn-dark"
             onClick={this.handleNextClick}
