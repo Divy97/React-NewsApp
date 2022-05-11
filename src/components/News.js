@@ -56,15 +56,11 @@ export default class News extends Component {
       <div className='container my-3'>
           <h2>NewsBuddy- Top headlines</h2>
           <div className='row'>
-              <div className='col-md-4'>
-                <NewsItem title="myTitle" description="MyDescription" imageUrl="https:////m.files.bbci.co.uk/modules/bbc-morph-sport-seo-meta/1.22.0/images/bbc-sport-logo.png"/>
-              </div>
-              <div className='col-md-4'>
-                <NewsItem title="myTitle" description="MyDescription"/>
-              </div>
-              <div className='col-md-4'>
-                <NewsItem title="myTitle" description="MyDescription"/>
-              </div>              
+          {this.state.articles.map((element)=>{
+            return <div className='col-md-4' key={element.url}>
+              <NewsItem title={element.title.slice(0, 45)} description={element.description.slice(0, 88)} imageUrl={element.urlToImage} newsUrl={element.url}/>
+            </div>  
+          })}          
           </div> 
       </div>
     )
