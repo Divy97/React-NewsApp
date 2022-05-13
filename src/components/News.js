@@ -36,6 +36,7 @@ export default class News extends Component {
     this.setState({
       loading: true,
     });
+    // this.props.setProgress(10);
     let data = await fetch(url);
     let parseData = await data.json();
     console.log(parseData);
@@ -44,6 +45,7 @@ export default class News extends Component {
       totalResults: parseData.totalResult,
       loading: false,
     });
+    // this.props.setProgress(100);
   }
 
   async componentDidMount() {
