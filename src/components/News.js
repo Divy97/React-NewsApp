@@ -56,7 +56,7 @@ export default class News extends Component {
     this.setState({
       page: this.state.page + 1,
     })
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=eac241ac497e4c8a81f80ddc57564122&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=eac241ac497e4c8a81f80ddc57564122&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     let data = await fetch(url);
     let parseData = await data.json();
     console.log(parseData);
@@ -69,7 +69,7 @@ export default class News extends Component {
   render() {
     return (
       <>
-        <h1 style={{ margin: "35px" }} className="text-center">
+        <h1 style={{ margin: "35px", marginTop: "90px" }} className="text-center">
           NewsBuddy- Top {this.capitalized(this.props.category)} headlines
         </h1>
         {this.state.loading && <Spinner />}
